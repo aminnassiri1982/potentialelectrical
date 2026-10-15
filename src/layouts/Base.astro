@@ -63,11 +63,17 @@ const schema = {
     <div class="nav-links">
       {links.map(([href, label]) => <a href={href} aria-current={cur(href)}>{label}</a>)}
     </div>
-    <details class="menu">
-      <summary>Menu</summary>
-      <div>{links.map(([href, label]) => <a href={href} aria-current={cur(href)}>{label}</a>)}</div>
-    </details>
     <a class="btn btn-primary" href="/contact/">Request a bid</a>
+    <details class="menu">
+      <summary aria-label="Menu">
+        <svg class="ico-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <svg class="ico-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </summary>
+      <div>
+        {links.map(([href, label]) => <a href={href} aria-current={cur(href)}>{label}</a>)}
+        <a class="m-cta" href="/contact/">Request a bid</a>
+      </div>
+    </details>
   </div></nav>
 
   <main><slot /></main>
@@ -88,6 +94,10 @@ const schema = {
   </div></footer>
 
   <script is:inline>
+    (function(){var m=document.querySelector('.menu');if(!m)return;
+      document.addEventListener('click',function(e){if(m.open&&!m.contains(e.target))m.open=false});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus()}});
+    })();
     var vids=document.querySelectorAll('video.auto');
     var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!still&&'IntersectionObserver' in window){
