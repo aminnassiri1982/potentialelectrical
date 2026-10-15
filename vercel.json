@@ -1,0 +1,13 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/about", "destination": "/capabilities/", "permanent": true },
+    { "source": "/about/:path*", "destination": "/capabilities/", "permanent": true },
+    { "source": "/service", "destination": "/capabilities/", "permanent": true },
+    { "source": "/service/:path*", "destination": "/capabilities/", "permanent": true },
+    { "source": "/services", "destination": "/capabilities/", "permanent": true },
+    { "source": "/services/:path*", "destination": "/capabilities/", "permanent": true },
+    { "source": "/clients", "destination": "/who-we-serve/", "permanent": true },
+    { "source": "/clients/:path*", "destination": "/who-we-serve/", "permanent": true }
+  ]
+}
