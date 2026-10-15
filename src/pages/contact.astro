@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Request a Bid" description="Send Potential Electrical your plan set. Response within one business day." path="/contact/">
+<section id="contact"><div class="wrap">
+  <div class="contact">
+    <div style="display:grid;gap:24px;min-width:0">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="label">Request a bid</p>
+        <h1>Send us the plan set. <em>We'll price it.</em></h1>
+        <p class="lead">Tell us about the project and we'll come back within one business day with scope questions or a bid schedule.</p>
+      </div>
+      <div class="card">
+        <div class="row"><span class="label">Bids and plan sets</span><span class="val"><span id="em2">info@potentialelectrical.com</span><button class="copy" type="button" data-copy="em2">Copy</button></span></div>
+        <div class="row"><span class="label">Service area</span><span class="val" style="font-weight:500">Statewide, California</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <form class="bid" id="bidform" name="bid-request" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="bid-request">
+        <div class="f"><label for="b-name">Name</label><input id="b-name" name="name" required autocomplete="name"></div>
+        <div class="f"><label for="b-co">Company</label><input id="b-co" name="company" required autocomplete="organization"></div>
+        <div class="f"><label for="b-email">Email</label><input id="b-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="f"><label for="b-phone">Phone</label><input id="b-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="f"><label for="b-type">Project type</label><select id="b-type" name="type"><option>DC fast charging</option><option>Supercharger / network program</option><option>Fleet or heavy-duty charging</option><option>Battery storage (BESS)</option><option>Utility / underground</option><option>Other</option></select></div>
+        <div class="f"><label for="b-loc">Site city</label><input id="b-loc" name="location" placeholder="e.g. Ontario, CA"></div>
+        <div class="f"><label for="b-due">Bid due</label><input id="b-due" name="due" type="date"></div>
+        <div class="f"><label for="b-wage">Wage basis</label><select id="b-wage" name="wage"><option>Not sure</option><option>Prevailing wage</option><option>Private / open shop</option></select></div>
+        <div class="f full"><label for="b-link">Plan set link</label><input id="b-link" name="plans" placeholder="Dropbox, Box, SharePoint or bid portal link"></div>
+        <div class="f full"><label for="b-msg">Scope notes</label><textarea id="b-msg" name="notes" placeholder="Stalls, service size, schedule, anything we should know"></textarea></div>
+        <button class="btn btn-primary" type="submit">Request a bid</button>
+      </form>
+      <div class="sent" id="sent" hidden>
+        <h3>Your request is ready.</h3>
+        <p style="color:var(--muted)">Email it to <b style="color:var(--ink)">info@potentialelectrical.com</b> and we'll respond within one business day.</p>
+        <pre id="summary"></pre>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="copy" type="button" data-copy="summary">Copy request</button><button class="copy" type="button" id="edit">Edit</button></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<script is:inline>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copy), t=el.textContent;
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+    var fallback=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+});
+var f=document.getElementById('bidform'),sent=document.getElementById('sent');
+f.addEventListener('submit',function(e){
+  if(location.hostname.indexOf('potentialelectrical.com')>-1)return; /* live site: the host's form handler receives it */
+  e.preventDefault();
+  var d=new FormData(f),out='Bid request\n';
+  [['name','Name'],['company','Company'],['email','Email'],['phone','Phone'],['type','Project type'],['location','Site city'],['due','Bid due'],['wage','Wage basis'],['plans','Plan set'],['notes','Notes']].forEach(function(k){var v=(d.get(k[0])||'').toString().trim();if(v)out+=k[1]+': '+v+'\n'});
+  document.getElementById('summary').textContent=out;f.hidden=true;sent.hidden=false;
+});
+document.getElementById('edit').addEventListener('click',function(){sent.hidden=true;f.hidden=false});
+</script>
+</Base>

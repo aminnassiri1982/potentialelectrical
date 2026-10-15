@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+
+interface Props { title: string; description: string; path: string; home?: boolean }
+const { title, description, path, home = false } = Astro.props;
+const site = 'Potential Electrical Design Services';
+const fullTitle = home ? `${title} | ${site}` : `${title} | ${site}`;
+const canonical = new URL(path, Astro.site).href;
+
+const links = [
+  ['/who-we-serve/', 'Who we serve'],
+  ['/work/', 'Work'],
+  ['/conduit/', 'Conduit'],
+  ['/underground/', 'Underground'],
+  ['/utility/', 'Utility'],
+  ['/prefab/', 'Prefab'],
+  ['/battery-storage/', 'BESS'],
+  ['/capabilities/', 'Capabilities'],
+  ['/safety/', 'Safety'],
+  ['/careers/', 'Careers'],
+];
+const cur = (p: string) => (path === p ? 'page' : undefined);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ElectricalContractor',
+  name: 'Potential Electrical Design Services Inc.',
+  url: 'https://potentialelectrical.com/',
+  email: 'info@potentialelectrical.com',
+  areaServed: 'California',
+  address: { '@type': 'PostalAddress', addressLocality: 'San Diego', addressRegion: 'CA' },
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/png" href="/mark.png" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  {home && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body>
+  <div class="strip"><div class="wrap">
+    <span>info@potentialelectrical.com</span><span>CSLB #996042 · C-10 / Class A</span>
+  </div></div>
+
+  <nav class="top"><div class="wrap">
+    <a class="brand" href="/" aria-label="Potential Electrical Design Services, home">
+      <img src="/mark.png" alt="" width="38" height="38" />
+      <span><b>POTENTIAL ELECTRICAL</b><small>DESIGN SERVICES</small></span>
+    </a>
+    <div class="nav-links">
+      {links.map(([href, label]) => <a href={href} aria-current={cur(href)}>{label}</a>)}
+    </div>
+    <details class="menu">
+      <summary>Menu</summary>
+      <div>{links.map(([href, label]) => <a href={href} aria-current={cur(href)}>{label}</a>)}</div>
+    </details>
+    <a class="btn btn-primary" href="/contact/">Request a bid</a>
+  </div></nav>
+
+  <main><slot /></main>
+
+  <footer><div class="wrap">
+    <div class="titleblock">
+      <div><span class="label">Contractor</span><strong>Potential Electrical Design Services Inc.</strong></div>
+      <div><span class="label">License</span>CSLB #996042<br />C-10 / Class A</div>
+      <div><span class="label">Licensed</span>Since 2014</div>
+      <div><span class="label">Service area</span>Statewide, California</div>
+      <div><span class="label">Based in</span>San Diego, CA</div>
+    </div>
+    <nav class="foot-links" aria-label="Footer">
+      {links.map(([href, label]) => <a href={href}>{label}</a>)}
+      <a href="/contact/">Contact</a>
+    </nav>
+    <p class="fine">© 2026 Potential Electrical Design Services Inc. · DIR-registered public works contractor</p>
+  </div></footer>
+
+  <script is:inline>
+    var vids=document.querySelectorAll('video.auto');
+    var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!still&&'IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}})},{threshold:.25});
+      vids.forEach(function(v){io.observe(v)});
+    }
+  </script>
+</body>
+</html>
