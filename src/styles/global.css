@@ -5,7 +5,7 @@
   --display:"Archivo","Arial Narrow",Arial,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --wrap:1180px;
+  --wrap:1360px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0E1210; --surface:#151B18; --ink:#E8EEEA; --muted:#9BA6A0; --line:#28312C;
