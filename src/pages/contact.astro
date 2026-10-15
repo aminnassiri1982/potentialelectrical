@@ -16,7 +16,8 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
     <div class="card">
-      <form class="bid" id="bidform" name="bid-request" method="POST" data-netlify="true">
+      <form class="bid" id="bidform" name="bid-request" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+        <p hidden><label>Do not fill this out: <input name="bot-field" /></label></p>
         <input type="hidden" name="form-name" value="bid-request">
         <div class="f"><label for="b-name">Name</label><input id="b-name" name="name" required autocomplete="name"></div>
         <div class="f"><label for="b-co">Company</label><input id="b-co" name="company" required autocomplete="organization"></div>
@@ -50,7 +51,7 @@ document.querySelectorAll('.copy').forEach(function(b){
 });
 var f=document.getElementById('bidform'),sent=document.getElementById('sent');
 f.addEventListener('submit',function(e){
-  if(location.hostname.indexOf('potentialelectrical.com')>-1)return; /* live site: the host's form handler receives it */
+  if(['localhost','127.0.0.1'].indexOf(location.hostname)<0)return; /* deployed (Netlify): the form posts to Netlify Forms; only local dev shows the copy-and-email summary */
   e.preventDefault();
   var d=new FormData(f),out='Bid request\n';
   [['name','Name'],['company','Company'],['email','Email'],['phone','Phone'],['type','Project type'],['location','Site city'],['due','Bid due'],['wage','Wage basis'],['plans','Plan set'],['notes','Notes']].forEach(function(k){var v=(d.get(k[0])||'').toString().trim();if(v)out+=k[1]+': '+v+'\n'});
