@@ -1,0 +1,9 @@
+// Web3Forms access keys (public by design; they only allow sending to the email each key was created for).
+// Create one free key per recipient at https://web3forms.com and paste them here:
+//   chrisdawson@potentialelectrical.com
+//   amin.nassiri.web@gmail.com
+// Each submission is posted once per key, so every recipient gets the email.
+export const web3formsKeys: string[] = [
+  // 'PASTE-KEY-FOR-chrisdawson@potentialelectrical.com',
+  // 'PASTE-KEY-FOR-amin.nassiri.web@gmail.com',
+];
