@@ -19,11 +19,17 @@ import Base from '../layouts/Base.astro';
   <ul class="creds" aria-label="Licenses and registrations">
     <li>Underground specialists</li><li>C-10 Electrical</li><li>Class A General Engineering</li><li>CSLB #996042</li><li>DIR-registered</li><li>EVITP-certified</li>
   </ul>
+  <div class="rwrap">
+  <button class="pnav prev" type="button" aria-label="Previous sites">&#8249;</button>
   <div class="reel" aria-label="Drone footage of completed sites">
     <figure><video class="auto" src="/v-santamonica.mp4" poster="/v-santamonica.jpg" muted loop playsinline preload="metadata" aria-label="Drone flyover, Santa Monica"></video><figcaption><b>Santa Monica</b><span>Electrify America · 2025</span></figcaption></figure>
     <figure><video class="auto" src="/v-longbeach.mp4" poster="/v-longbeach.jpg" muted loop playsinline preload="metadata" aria-label="Drone flyover, Long Beach"></video><figcaption><b>Long Beach</b><span>Tesla Supercharger · 2026</span></figcaption></figure>
+    <figure><video class="auto" src="/v-nfi.mp4" poster="/v-nfi.jpg" muted loop playsinline preload="metadata" aria-label="Drone flyover, NFI Green City rooftop solar, Ontario"></video><figcaption><b>NFI Green City, Ontario</b><span>1.1 MW rooftop solar · 2025</span></figcaption></figure>
+    <figure><img src="/diner.jpg" alt="Tesla Diner, Hollywood, finished site" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><figcaption><b>Tesla Diner, Hollywood</b><span>Tesla · Civil and utility</span></figcaption></figure>
     <figure><video class="auto" src="/v-midway.mp4" poster="/v-midway.jpg" muted loop playsinline preload="metadata" aria-label="Drone flyover, Midway, San Diego"></video><figcaption><b>Midway, San Diego</b><span>EVgo · 2026</span></figcaption></figure>
     <figure><video class="auto" src="/v-university.mp4" poster="/v-university.jpg" muted loop playsinline preload="metadata" aria-label="Drone flyover, University, San Diego"></video><figcaption><b>University, San Diego</b><span>EVgo · 2025</span></figcaption></figure>
+  </div>
+  <button class="pnav next" type="button" aria-label="More sites">&#8250;</button>
   </div>
 </div></header>
 <div class="band" aria-label="Key figures"><div class="wrap">
@@ -55,4 +61,11 @@ import Base from '../layouts/Base.astro';
   <h2>Have a plan set? We'll price it.</h2>
   <a class="btn" href="/contact/">Request a bid</a>
 </div></div>
+<script is:inline>
+(function(){var w=document.querySelector('.rwrap');if(!w)return;var g=w.querySelector('.reel'),pv=w.querySelector('.pnav.prev'),nx=w.querySelector('.pnav.next');
+function step(){var c=g.querySelector('figure');return c?c.getBoundingClientRect().width+10:250}
+function upd(){pv.disabled=g.scrollLeft<4;nx.disabled=g.scrollLeft+g.clientWidth>=g.scrollWidth-4}
+pv.addEventListener('click',function(){g.scrollBy({left:-step(),behavior:'smooth'})});nx.addEventListener('click',function(){g.scrollBy({left:step(),behavior:'smooth'})});
+g.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();})();
+</script>
 </Base>

@@ -8,19 +8,31 @@ import Base from '../layouts/Base.astro';
     <h1>Delivered for the networks that set the standard.</h1>
     <p class="lead">Each site below was self-performed by our crews, civil and electrical, from mobilization through utility energization and closeout.</p>
   </div>
+  <div class="pwrap">
+  <button class="pnav prev" type="button" aria-label="Previous projects">&#8249;</button>
   <div class="pgrid">
     <article class="pcard"><figure><video class="auto" src="/v-santamonica.mp4" poster="/v-santamonica.jpg" muted loop playsinline preload="none" aria-label="Drone footage, Santa Monica"></video></figure>
       <div class="proj-body"><p class="label">Electrify America · 2025</p><h3>Santa Monica Flagship</h3><dl class="case"><dt>Scope</dt><dd>10 × 360 kW power units, 20 dispensers</dd><dt>Challenge</dt><dd>Dense urban corner lot, tight staging</dd><dt>Delivered</dt><dd>Full civil, electrical and utility tie-in</dd></dl></div></article>
     <article class="pcard"><figure><video class="auto" src="/v-longbeach.mp4" poster="/v-longbeach.jpg" muted loop playsinline preload="none" aria-label="Drone footage, Long Beach"></video></figure>
       <div class="proj-body"><p class="label">Tesla · 2026</p><h3>Supercharger, Long Beach</h3><dl class="case"><dt>Scope</dt><dd>31 stalls, 4,000A service</dd><dt>Challenge</dt><dd>Switchboard and 8 cabinets of conduit in one excavation</dd><dt>Delivered</dt><dd>Underground prefabricated, set in one pick</dd></dl></div></article>
-    <article class="pcard"><figure><video class="auto" src="/v-midway.mp4" poster="/v-midway.jpg" muted loop playsinline preload="none" aria-label="Drone footage, Midway"></video></figure>
-      <div class="proj-body"><p class="label">EVgo · 2026</p><h3>Midway, San Diego</h3><dl class="case"><dt>Scope</dt><dd>DC fast charging site</dd><dt>Challenge</dt><dd>Active commercial lot</dd><dt>Delivered</dt><dd>Underground, gear pads and equipment set</dd></dl></div></article>
-    <article class="pcard"><figure><video class="auto" src="/v-university.mp4" poster="/v-university.jpg" muted loop playsinline preload="none" aria-label="Drone footage, EVgo University"></video></figure>
-      <div class="proj-body"><p class="label">EVgo · 2025</p><h3>University, San Diego</h3><dl class="case"><dt>Scope</dt><dd>DC fast charging in an active retail lot</dd><dt>Delivered</dt><dd>Underground, pads, equipment set and energization</dd></dl></div></article>
     <article class="pcard"><figure><video class="auto" src="/v-nfi.mp4" poster="/v-nfi.jpg" muted loop playsinline preload="none" aria-label="Drone footage of the NFI Green City rooftop solar array, Ontario"></video><span class="badge"><b>1.1 MW</b>DC rooftop solar</span></figure>
       <div class="proj-body"><p class="label">Electrify America · 2025</p><h3>NFI Green City, Ontario</h3><dl class="case"><dt>Scope</dt><dd>1.1 MW DC rooftop solar</dd><dt>Delivered</dt><dd>Project delivery, underground civil, electrical infrastructure and coordination of the rooftop install</dd></dl></div></article>
     <article class="pcard"><figure><img src="/diner.jpg" alt="The Tesla Diner in Hollywood with the finished concrete site, crosswalks and Supercharger stalls" loading="lazy"><span class="badge"><b>300+</b>yards of concrete</span></figure>
       <div class="proj-body"><p class="label">Tesla · Civil and utility</p><h3>Tesla Diner, Hollywood</h3><p style="color:var(--muted);font-size:.93rem">Trenching and LADWP service conduits, about 20,000 sq ft of grading, two driveway approaches, curb and gutter, 160+ ft of sidewalk and right-of-way work, and asphalt restoration.</p></div></article>
+    <article class="pcard"><figure><video class="auto" src="/v-midway.mp4" poster="/v-midway.jpg" muted loop playsinline preload="none" aria-label="Drone footage, Midway"></video></figure>
+      <div class="proj-body"><p class="label">EVgo · 2026</p><h3>Midway, San Diego</h3><dl class="case"><dt>Scope</dt><dd>DC fast charging site</dd><dt>Challenge</dt><dd>Active commercial lot</dd><dt>Delivered</dt><dd>Underground, gear pads and equipment set</dd></dl></div></article>
+    <article class="pcard"><figure><video class="auto" src="/v-university.mp4" poster="/v-university.jpg" muted loop playsinline preload="none" aria-label="Drone footage, EVgo University"></video></figure>
+      <div class="proj-body"><p class="label">EVgo · 2025</p><h3>University, San Diego</h3><dl class="case"><dt>Scope</dt><dd>DC fast charging in an active retail lot</dd><dt>Delivered</dt><dd>Underground, pads, equipment set and energization</dd></dl></div></article>
+  </div>
+  <button class="pnav next" type="button" aria-label="More projects">&#8250;</button>
+  </div>
+
+  <div class="cgrid" style="margin-top:16px">
+    <figure class="lead"><img src="/w-truxtun.jpg" alt="Tesla Supercharger 3,000A main switchboard on a new pad with bollards, Truxtun Rd, San Diego" loading="lazy"><figcaption>Tesla Supercharger, Truxtun Rd, San Diego · 3,000A service</figcaption></figure>
+    <figure class="tall"><img src="/w-setgear.jpg" alt="Potential Electrical crew setting a switchboard section by telehandler between Supercharger cabinets" loading="lazy"><figcaption>Switchboard set between Supercharger cabinets</figcaption></figure>
+    <figure class="third tt"><img src="/w-ea.jpg" alt="Electrify America dispensers on new asphalt with bollards, transformer and gear behind" loading="lazy"><figcaption>Electrify America site, ready to energize</figcaption></figure>
+    <figure class="third tt"><img src="/w-terms.jpg" alt="Breaker terminations with feeders phased, numbered and dressed in a switchboard" loading="lazy"><figcaption>Feeders terminated, labeled and dressed</figcaption></figure>
+    <figure class="third tt"><img src="/w-bus.jpg" alt="Open switchboard sections showing bus bars ready for terminations" loading="lazy"><figcaption>Switchboard bus ready for terminations</figcaption></figure>
   </div>
 
   <div class="tr">
@@ -48,4 +60,11 @@ import Base from '../layouts/Base.astro';
   <h2>Have a plan set? We'll price it.</h2>
   <a class="btn" href="/contact/">Request a bid</a>
 </div></div>
+<script is:inline>
+(function(){var g=document.querySelector('#work .pgrid');if(!g)return;var pv=document.querySelector('#work .pnav.prev'),nx=document.querySelector('#work .pnav.next');
+function step(){var c=g.querySelector('.pcard');return c?c.getBoundingClientRect().width+16:300}
+function upd(){pv.disabled=g.scrollLeft<4;nx.disabled=g.scrollLeft+g.clientWidth>=g.scrollWidth-4}
+pv.addEventListener('click',function(){g.scrollBy({left:-step(),behavior:'smooth'})});nx.addEventListener('click',function(){g.scrollBy({left:step(),behavior:'smooth'})});
+g.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();})();
+</script>
 </Base>
